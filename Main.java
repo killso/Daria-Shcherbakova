@@ -1,49 +1,38 @@
+import java.util.Random;
 import java.util.Scanner;
-public class Main {
+public class Main  {
     public static void main(String args[]) {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Введите строку: ");
-        String txt = input.nextLine();
-        System.out.print("Введите подстроку для поиска: ");
-        String str = input.nextLine();
-        System.out.print("Опция чувствительности к регистру? (0 - нет, 1 - да): ");
-        int lettercase = input.nextInt();
-        //Опция чувствительности к регистру
-        if (lettercase == 0) {
-            txt = txt.toUpperCase();
-            str = str.toUpperCase();
-        }
-        long time = System.currentTimeMillis();
-        //Префикс функция
-        int massiv[] = new int[str.length()];
-        Morris findStr = new Morris(txt, str);
-        findStr.prefix(massiv);
-        // Поиск
-        int res = findStr.Morris1(massiv);
-        long time1 = System.currentTimeMillis() - time;
-        // Вывод результата
-        if (res == -1) {
-            System.out.println("Данная подстрока не содержится в тексте");
-            return;
-        } else {
-            // Выводим на экран
-            System.out.println("Найденная подстрока:");
-            findStr.vivod(res);
-        }
-        time = System.currentTimeMillis();
-        int indexJava = txt.indexOf(str);
-        long time2 = System.currentTimeMillis() - time;
-
-        System.out.println("\nРезультаты поиска:");
-        System.out.println("indexJava: " + indexJava + ", timeJava: " + time2);
-        System.out.println("indexMy: " + res + ", timeMy: " + time1);
-
-        input.close();
-    }
+    Scanner input = new Scanner(System.in);
+    System.out.print("матрица или массив?");
+    System.out.print("(матрица - mat, массив - mas): ");
+    String ch = input.nextLine();
+    if (ch == "mat") {
+        int[] array = array(n); //сгенерировали массив
+    } else if (ch == "mas") {
+    } else return;
+    System.out.print("Введите ширину/длину матрицы: ");
+    System.out.print("Выводить матрицу/массив?");
+    int n = input.nextInt();
+    int[][] array = array(n); //сгенерировали массив
+    Sort sort = new Sort();
+    sort.Shell1(array, n, true);
+    sort.QuickSort1(array, n, true);
+    sort.Sort1(array, n, true);
 }
-
-
-
-
-
+        //генерация массива
+        public static int[][] array(int n) {
+            Scanner input = new Scanner(System.in);
+            Random rnd = new Random();
+            System.out.print("Генерация массива: \n");
+            int[][] mas = new int[n][n];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j<n; j++) {
+                    mas[i][j] = rnd.nextInt(100);
+                    System.out.print(mas[i][j] + "\t");
+                }
+                System.out.print("\n");
+            }
+            return mas;
+        }
+}
 
