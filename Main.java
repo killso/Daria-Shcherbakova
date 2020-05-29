@@ -1,59 +1,49 @@
-package com.company;
+import java.util.Scanner;
 public class Main {
+    public static void main(String args[]) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Введите строку: ");
+        String txt = input.nextLine();
+        System.out.print("Введите подстроку для поиска: ");
+        String str = input.nextLine();
+        System.out.print("Опция чувствительности к регистру? (0 - нет, 1 - да): ");
+        int lettercase = input.nextInt();
+        //Опция чувствительности к регистру
+        if (lettercase == 0) {
+            txt = txt.toUpperCase();
+            str = str.toUpperCase();
+        }
+        long time = System.currentTimeMillis();
+        //Префикс функция
+        int massiv[] = new int[str.length()];
+        Morris findStr = new Morris(txt, str);
+        findStr.prefix(massiv);
+        // Поиск
+        int res = findStr.Morris1(massiv);
+        long time1 = System.currentTimeMillis() - time;
+        // Вывод результата
+        if (res == -1) {
+            System.out.println("Данная подстрока не содержится в тексте");
+            return;
+        } else {
+            // Выводим на экран
+            System.out.println("Найденная подстрока:");
+            findStr.vivod(res);
+        }
+        time = System.currentTimeMillis();
+        int indexJava = txt.indexOf(str);
+        long time2 = System.currentTimeMillis() - time;
 
-    public static void main(String[] args) {
-        System.out.println(abcmath(1, 2, 3));
+        System.out.println("\nРезультаты поиска:");
+        System.out.println("indexJava: " + indexJava + ", timeJava: " + time2);
+        System.out.println("indexMy: " + res + ", timeMy: " + time1);
+
+        input.close();
     }
-public static int remainder(int a, int b){
-        int o = a % b;
-        return o;
 }
-public static int triArea(int a, int b){
-        return a*b/2;
-}
-public static int animals(int a, int b, int c){
-        return (a*2+b*4+c*4);
-}
-public static boolean profitableGamble(double a, double b, double c) {
-    if (a * b > c) return true;
-    else return false;
-}
-public static String operation (int n, int a, int b){
-        String c = "added";
-    String h = "none";
-        if (a+b==n) return c;
-        String d = "subtracted";
-        if (a-b==n) return d;
-        String e = "умножение";
-        if (a*b==n) return e;
-        String g = "деление";
-        if (a/b==n) return g;
-        else return h;
-}
-public static int ctoa (char a){
-        return (int)a;
-}
-public static int addUpTo (int a){
-        int sum = 0;
-        for (int i = 0; i <= a; i++){
-            sum+= i;
-        }
-return sum;
-}
-public static int nextEdge (int a, int b){
-        return (a+b-1);
-}
-public static int sumOfCubes (int[] mas){
-        int s = 0;
-        for (int i = 0; i <= mas.length; i++){
-          s = i*i*i+s;
-        }
-        return s;
-}
-public static boolean abcmath(int a, int b, int c){
-        int m = a*b;
-        if (m%c == 0) return true;
-        else return false;
 
-}
-}
+
+
+
+
+
