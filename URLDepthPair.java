@@ -19,7 +19,8 @@ public class URLDepthPair {
         return Integer.toString(depth) + '\t' + url;
     }
     public String getHost() {
-        try {
+        try
+        {
             return (new URL(url)).getHost();
         } catch (MalformedURLException e) {
             System.err.println("MalformedURLException: " + e.getMessage());
@@ -27,7 +28,8 @@ public class URLDepthPair {
         }
     }
     public String getPath() {
-        try {
+        try
+        {
             return (new URL(url)).getPath();
         }
         catch (MalformedURLException e) {
