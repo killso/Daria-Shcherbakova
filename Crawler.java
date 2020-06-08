@@ -10,7 +10,6 @@ public class Crawler {
     public static final String Start = "a href=\"";
     public static final String End = "\"";
     public static void main(String args[]) throws UnknownHostException, IOException {
-        // с этого начинаем скан
         int depth = 0;
         String url;
         try {
