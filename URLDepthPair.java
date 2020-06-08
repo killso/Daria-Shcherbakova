@@ -6,26 +6,17 @@ public class URLDepthPair {
         url = site;
         depth = ch;
     }
-    public String getURL() {
-        return url;
-    }
     public void setURL(String newUrl) {
         url = newUrl;
     }
-    public int getDepth() {
-        return depth;
+    public String getURL() {
+        return url;
     }
     public String toString() {
         return Integer.toString(depth) + '\t' + url;
     }
-    public String getHost() {
-        try
-        {
-            return (new URL(url)).getHost();
-        } catch (MalformedURLException e) {
-            System.err.println("MalformedURLException: " + e.getMessage());
-            return null;
-        }
+    public int getDepth() {
+        return depth;
     }
     public String getPath() {
         try
@@ -33,7 +24,16 @@ public class URLDepthPair {
             return (new URL(url)).getPath();
         }
         catch (MalformedURLException e) {
-            System.err.println("MalformedURLException: " + e.getMessage());
+            System.err.println("MalformedURLException : " + e.getMessage());
+            return null;
+        }
+    }
+    public String getHost() {
+        try
+        {
+            return (new URL(url)).getHost();
+        } catch (MalformedURLException e) {
+            System.err.println("MalformedURLException : " + e.getMessage());
             return null;
         }
     }
