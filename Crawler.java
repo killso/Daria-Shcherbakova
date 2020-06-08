@@ -59,24 +59,24 @@ public class Crawler {
         BufferedReader inLines = new BufferedReader(in);
         while(true)
         {
-            String line;
-            int beginIndex = 0;
-            int endIndex = 0;
+            String str;
+            int beginIndex=0;
+            int endIndex=0;
             try {
-                line = inLines.readLine();
+                str=inLines.readLine();
             }
             catch (IOException e) {
                 System.out.println("IOException: " + e.getMessage());
                 break;
             }
-            if(line == null) break;
+            if(str==null) break;
             while (true){
-                beginIndex = line.indexOf(Start,beginIndex);
-                if(beginIndex == -1) break;
+                beginIndex = str.indexOf(Start,beginIndex);
+                if(beginIndex==(-1)) break;
+                endIndex = str.indexOf(End, beginIndex);
                 beginIndex += Start.length();
-                endIndex = line.indexOf(End, beginIndex);
-                url1.add(line.substring(beginIndex,endIndex));
-                beginIndex = endIndex;
+                url1.add(str.substring(beginIndex,endIndex));
+                beginIndex=endIndex;
             }
         }
         for (int i = 0; i < url1.size();i++) {
@@ -95,7 +95,7 @@ public class Crawler {
             depth=Integer.parseInt(args[1]);
         }
         catch (NumberFormatException nfe) {
-            System.out.println("usage: java Crawler <URL> <depth>");
+            System.out.println("usage : java Crawler <URL> <depth>");
             return;
         }
         URLDepthPair startSite = new URLDepthPair(url, 0);
